@@ -150,6 +150,8 @@ int yyerror(const char *fmt, ...);
 "remote_data"			{ count(); return(REMOTE_DATA); }
 "http_response"			{ count(); return(HTTP_RESPONSE); }
 "http_request"			{ count(); return(HTTP_REQUEST); }
+"transaction_result"	{ count(); return(TRANSACTION_RESULT); }
+"path_update"			{ count(); return(PATH_UPDATE); }
 "."						{ count(); return(PERIOD); }
 
 

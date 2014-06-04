@@ -803,6 +803,56 @@ public:
 	LLScriptIdentifier	*mBody;
 };
 
+class LLScriptTransactionResultEvent : public LLScriptEvent
+{
+public:
+	LLScriptTransactionResultEvent(S32 line, S32 col,
+		LLScriptIdentifier *request_id,
+		LLScriptIdentifier *success,
+		LLScriptIdentifier *data)
+		: LLScriptEvent(line, col, LSTT_TRANSACTION_RESULT),
+		 mRequestId(request_id), mSuccess(success), mData(data)
+	{
+	}
+
+	void recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass pass,
+		LSCRIPTPruneType ptype, BOOL &prunearg, LLScriptScope *scope,
+		LSCRIPTType &type, LSCRIPTType basetype, U64 &count,
+		LLScriptByteCodeChunk *chunk, LLScriptByteCodeChunk *heap,
+		S32 stacksize, LLScriptScopeEntry *entry,
+		S32 entrycount, LLScriptLibData **ldata);
+		
+	S32 getSize();
+
+	LLScriptIdentifier	*mRequestId;
+	LLScriptIdentifier	*mSuccess;
+	LLScriptIdentifier	*mData;
+};
+
+class LLScriptPathUpdateEvent : public LLScriptEvent
+{
+public:
+	LLScriptPathUpdateEvent(S32 line, S32 col,
+		LLScriptIdentifier *typ,
+		LLScriptIdentifier *reserved)
+		: LLScriptEvent(line, col, LSTT_PATH_UPDATE),
+		 mTyp(typ), mReserved(reserved)
+	{
+	}
+
+	void recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass pass,
+		LSCRIPTPruneType ptype, BOOL &prunearg, LLScriptScope *scope,
+		LSCRIPTType &type, LSCRIPTType basetype, U64 &count,
+		LLScriptByteCodeChunk *chunk, LLScriptByteCodeChunk *heap,
+		S32 stacksize, LLScriptScopeEntry *entry,
+		S32 entrycount, LLScriptLibData **ldata);
+		
+	S32 getSize();
+
+	LLScriptIdentifier	*mTyp;
+	LLScriptIdentifier	*mReserved;
+};
+
 class LLScriptRezEvent : public LLScriptEvent
 {
 public:
