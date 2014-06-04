@@ -260,7 +260,7 @@ BOOL lscript_compile(const char* src_filename, const char* dst_filename,
 
 		// Reset the lexer's internal buffering.
 
-	    yyrestart(yyin);
+		yyrestart(yyin);
 
 		b_parse_ok = !yyparse();
 
@@ -268,7 +268,7 @@ BOOL lscript_compile(const char* src_filename, const char* dst_filename,
 		{
 #ifdef EMERGENCY_DEBUG_PRINTOUTS
 			char compiled[256];
-			sprintf(compiled, "%s.o", src_filename);
+			sprintf(compiled, "%s.pp", src_filename);
 			LLFILE* compfile;
 			compfile = LLFile::fopen(compiled, "w");
 #endif
