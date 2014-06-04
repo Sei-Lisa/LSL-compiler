@@ -1226,9 +1226,9 @@ void LLScriptTouchStartEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPT
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "touch_start( integer ");
+		fprintf(fp, "touch_start(integer ");
 		mCount->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 		break;
 	case LSCP_SCOPE_PASS1:
@@ -1283,9 +1283,9 @@ void LLScriptTouchEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompi
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "touch( integer ");
+		fprintf(fp, "touch(integer ");
 		mCount->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 		break;
 	case LSCP_SCOPE_PASS1:
@@ -1340,9 +1340,9 @@ void LLScriptTouchEndEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCo
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "touch_end( integer ");
+		fprintf(fp, "touch_end(integer ");
 		mCount->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 		break;
 	case LSCP_SCOPE_PASS1:
@@ -1397,9 +1397,9 @@ void LLScriptCollisionStartEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSC
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "collision_start( integer ");
+		fprintf(fp, "collision_start(integer ");
 		mCount->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 		break;
 	case LSCP_SCOPE_PASS1:
@@ -1453,9 +1453,9 @@ void LLScriptCollisionEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTC
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "collision( integer ");
+		fprintf(fp, "collision(integer ");
 		mCount->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 		break;
 	case LSCP_SCOPE_PASS1:
@@ -1508,9 +1508,9 @@ void LLScriptCollisionEndEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "collision_end( integer ");
+		fprintf(fp, "collision_end(integer ");
 		mCount->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 		break;
 	case LSCP_SCOPE_PASS1:
@@ -1564,9 +1564,9 @@ void LLScriptLandCollisionStartEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize,
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "land_collision_start( vector ");
+		fprintf(fp, "land_collision_start(vector ");
 		mPosition->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "land_collision_start");
@@ -1621,9 +1621,9 @@ void LLScriptLandCollisionEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCR
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "land_collision( vector ");
+		fprintf(fp, "land_collision(vector ");
 		mPosition->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "land_collision");
@@ -1677,9 +1677,9 @@ void LLScriptLandCollisionEndEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, L
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "land_collision_end( vector ");
+		fprintf(fp, "land_collision_end(vector ");
 		mPosition->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "land_collision_end");
@@ -1733,9 +1733,9 @@ void LLScriptInventoryEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTC
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "changed( integer ");
+		fprintf(fp, "changed(integer ");
 		mChange->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "changed");
@@ -1788,9 +1788,9 @@ void LLScriptAttachEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTComp
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "attach( key ");
+		fprintf(fp, "attach(key ");
 		mAttach->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "attach");
@@ -1843,11 +1843,11 @@ void LLScriptDataserverEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPT
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "dataserver( key ");
+		fprintf(fp, "dataserver(key ");
 		mID->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", string ");
 		mData->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "dataserver");
@@ -2006,9 +2006,9 @@ void LLScriptRTPEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "chat( integer ");
+		fprintf(fp, "run_time_permissions(integer ");
 		mRTPermissions->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "run_time_perms");
@@ -2062,7 +2062,7 @@ void LLScriptChatEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompil
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "chat( integer ");
+		fprintf(fp, "chat(integer ");
 		mChannel->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", string ");
 		mName->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -2070,7 +2070,7 @@ void LLScriptChatEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompil
 		mID->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", string ");
 		mMessage->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 		checkForDuplicateHandler(fp, this, scope, "listen"); // note: this is actually listen in lsl source
@@ -2165,9 +2165,9 @@ void LLScriptSensorEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTComp
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "sensor( integer ");
+		fprintf(fp, "sensor(integer ");
 		mNumber->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "sensor");
@@ -2220,9 +2220,9 @@ void LLScriptObjectRezEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTC
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "object_rez( key ");
+		fprintf(fp, "object_rez(key ");
 		mID->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "object_rez");
@@ -2275,13 +2275,13 @@ void LLScriptControlEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCom
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "control( key ");
+		fprintf(fp, "control(key ");
 		mName->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", integer ");
 		mLevels->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", integer ");
 		mEdges->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "control");
@@ -2362,7 +2362,7 @@ void LLScriptLinkMessageEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIP
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "link_message( integer ");
+		fprintf(fp, "link_message(integer ");
 		mSender->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", integer ");
 		mNum->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -2370,7 +2370,7 @@ void LLScriptLinkMessageEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIP
 		mStr->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", key ");
 		mID->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "link_message");
@@ -2465,7 +2465,7 @@ void LLScriptRemoteEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTComp
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "remote_event( integer ");
+		fprintf(fp, "remote_event(integer ");
 		mType->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", key ");
 		mChannel->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -2477,7 +2477,7 @@ void LLScriptRemoteEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTComp
 		mIntVal->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", string ");
 		mStrVal->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "remote_event");
@@ -2600,7 +2600,7 @@ void LLScriptHTTPResponseEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "http_response( key ");
+		fprintf(fp, "http_response(key ");
 		mRequestId->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", integer ");
 		mStatus->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -2608,7 +2608,7 @@ void LLScriptHTTPResponseEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 		mMetadata->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", string ");
 		mBody->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 
 	case LSCP_SCOPE_PASS1:
@@ -2712,13 +2712,13 @@ void LLScriptHTTPRequestEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIP
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "http_request( key ");
+		fprintf(fp, "http_request(key ");
 		mRequestId->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", string ");
 		mMethod->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", string ");
 		mBody->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 
 	case LSCP_SCOPE_PASS1:
@@ -2806,11 +2806,11 @@ void LLScriptMoneyEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompi
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "money( key ");
+		fprintf(fp, "money(key ");
 		mName->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", integer ");
 		mAmount->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "money");
@@ -2877,7 +2877,7 @@ void LLScriptEmailEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompi
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "email( string ");
+		fprintf(fp, "email(string ");
 		mTime->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", string ");
 		mAddress->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -2887,7 +2887,7 @@ void LLScriptEmailEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompi
 		mBody->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", integer ");
 		mNumber->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "email");
@@ -2996,9 +2996,9 @@ void LLScriptRezEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "rez( integer ");
+		fprintf(fp, "%s(integer ", pass == LSCP_PRETTY_PRINT ? "on_rez" : "rez");
 		mStartParam->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 		checkForDuplicateHandler(fp, this, scope, "on_rez");
@@ -3024,7 +3024,7 @@ void LLScriptRezEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 		break;
 	case LSCP_EMIT_CIL_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "rez( int32 ");
+		fprintf(fp, "rez( int32 "); // fixme?
 		mStartParam->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, " )");
 		break;
@@ -3082,13 +3082,13 @@ void LLScriptAtTarget::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "at_target( integer ");
+		fprintf(fp, "at_target(integer ");
 		mTargetNumber->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", vector ");
 		mTargetPosition->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", vector ");
 		mOurPosition->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 	        checkForDuplicateHandler(fp, this, scope, "at_target");
@@ -3203,13 +3203,13 @@ void LLScriptAtRotTarget::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTComp
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "at_rot_target( integer ");
+		fprintf(fp, "at_rot_target(integer ");
 		mTargetNumber->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", quaternion ");
 		mTargetRotation->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", quaternion ");
 		mOurRotation->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
 		checkForDuplicateHandler(fp, this, scope, "at_rot_target");
@@ -6606,9 +6606,9 @@ void LLScriptPrint::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePas
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
-		fprintf(fp, " PRINT ( ");
+		fprintf(fp, "print(");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )");
+		fprintf(fp, ")");
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -6620,10 +6620,10 @@ void LLScriptPrint::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePas
 		mReturnType = LST_NULL;
 		break;
 	case LSCP_EMIT_CIL_ASSEMBLY:
-	        mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		print_cil_cast(fp, mLeftType, LST_STRING);
- 	        fprintf(fp, "call void class [LslLibrary]LindenLab.SecondLife.Library::Print(string)");
-	        break;
+		fprintf(fp, "call void class [LslLibrary]LindenLab.SecondLife.Library::Print(string)");
+		break;
 	default:
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
@@ -7335,7 +7335,7 @@ void LLScriptFor::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass 
 	{
 	case LSCP_PRETTY_PRINT:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "for ( ");
+		fprintf(fp, "for (");
 		if(mSequence)
 			mSequence->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, " ; ");
@@ -7343,7 +7343,7 @@ void LLScriptFor::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass 
 		fprintf(fp, " ; ");
 		if(mExpressionList)
 			mExpressionList->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		if(mStatement)
 			mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
@@ -7430,9 +7430,9 @@ void LLScriptDoWhile::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompileP
 		fprintf(fp, "do\n");
 		mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "while( ");
+		fprintf(fp, "while (");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " );\n");
+		fprintf(fp, ");\n");
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		{
@@ -7488,9 +7488,9 @@ void LLScriptWhile::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePas
 	{
 	case LSCP_PRETTY_PRINT:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "while( ");
+		fprintf(fp, "while (");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
 	case LSCP_EMIT_ASSEMBLY:
