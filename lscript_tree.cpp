@@ -35,7 +35,6 @@
 //#include "lscript_heap.h"
 #include "lscript_library.h"
 //#include "lscript_alloc.h"
-#include "lscript_byteconvert.h"
 
 //#define LSL_INCLUDE_DEBUG_INFO
 
