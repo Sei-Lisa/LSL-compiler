@@ -1,25 +1,25 @@
-/** 
+/**
  * @file lscript_tree.cpp
  * @brief implements methods for lscript_tree.h classes
  *
  * $LicenseInfo:firstyear=2002&license=viewerlgpl$
  * Second Life Viewer Source Code
  * Copyright (C) 2010, Linden Research, Inc.
- * 
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation;
  * version 2.1 of the License only.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- * 
+ *
  * Linden Research, Inc., 945 Battery Street, San Francisco, CA  94111  USA
  * $/LicenseInfo$
  */
@@ -41,7 +41,7 @@
 
 static void print_cil_box(LLFILE* fp, LSCRIPTType type)
 {
-	
+
 switch(type)
 	{
 	case LST_INTEGER:
@@ -81,7 +81,7 @@ static void print_cil_type(LLFILE* fp, LSCRIPTType type)
 		break;
 	case LST_STRING:
 		fprintf(fp, "string");
-		break;		
+		break;
 	case LST_KEY:
 		fprintf(fp, "valuetype [ScriptTypes]LindenLab.SecondLife.Key");
 		break;
@@ -341,7 +341,7 @@ void LLScriptIdentifier::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompi
 
 S32 LLScriptIdentifier::getSize()
 {
-	
+
 	return 0;
 }
 
@@ -367,7 +367,7 @@ void LLScriptSimpleAssignable::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIP
 
 S32 LLScriptSimpleAssignable::getSize()
 {
-	
+
 	printf("Simple Assignable Base Class -- should never get here!\n");
 	return 0;
 }
@@ -396,7 +396,7 @@ void LLScriptSAIdentifier::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCom
 		}
 		break;
 	case LSCP_SCOPE_PASS1:
-		{ 
+		{
 			LLScriptScopeEntry *entry = scope->findEntry(mIdentifier->mName);
 			if (!entry)
 			{
@@ -523,7 +523,7 @@ static void print_cil_cast(LLFILE* fp, LSCRIPTType srcType, LSCRIPTType targetTy
 			break;
 		case LST_KEY:
 			fprintf(fp, "call valuetype [ScriptTypes]LindenLab.SecondLife.Key class [LslUserScript]LindenLab.SecondLife.LslUserScript::'CreateKey'(string)\n");
-			break;	
+			break;
 		case LST_LIST:
 			fprintf(fp, "call class [mscorlib]System.Collections.ArrayList class [LslUserScript]LindenLab.SecondLife.LslUserScript::CreateList(object)\n");
 			break;
@@ -626,7 +626,7 @@ static void print_cil_assignment_cast(LLFILE* fp, LSCRIPTType src,
 		print_cil_numeric_cast(fp, src, dest);
 	}
 }
- 
+
 // HACK! Babbage: should be converted to virtual on LSCRIPTSimpleAssignableType to avoid downcasts.
 LSCRIPTType get_type(LLScriptSimpleAssignable* sa)
 {
@@ -719,7 +719,7 @@ void LLScriptSAVector::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 		{
 			print_cil_cast(fp, LST_INTEGER, LST_FLOATINGPOINT);
 		}
-		
+
 		// Call named ctor, which leaves new Vector on stack, so it can be saved in to local or argument just like a primitive type.
 		fprintf(fp, "call class [ScriptTypes]LindenLab.SecondLife.Vector class [LslUserScript]LindenLab.SecondLife.LslUserScript::'CreateVector'(float32, float32, float32)\n");
 
@@ -822,7 +822,7 @@ void LLScriptSAQuaternion::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCom
 		{
 			print_cil_cast(fp, LST_INTEGER, LST_FLOATINGPOINT);
 		}
-		
+
 		// Call named ctor, which leaves new Vector on stack, so it can be saved in to local or argument just like a primitive type.
 		fprintf(fp, "call class [ScriptTypes]LindenLab.SecondLife.Quaternion class [LslUserScript]LindenLab.SecondLife.LslUserScript::'CreateQuaternion'(float32, float32, float32, float32)\n");
 
@@ -1042,7 +1042,7 @@ void LLScriptGlobalVariable::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTC
 			if (mAssignable)
 			{
 				mAssignable->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-			}			
+			}
 			// this needs to go after expression decent to make sure that we don't add ourselves or something silly
 			mIdentifier->mScopeEntry = scope->addEntry(mIdentifier->mName, LIT_GLOBAL, mType->mType);
 			if (mIdentifier->mScopeEntry && mAssignable)
@@ -1132,7 +1132,7 @@ S32 LLScriptEvent::getSize()
 	printf("Event Base Class -- should never get here!\n");
 	return 0;
 }
-static void checkForDuplicateHandler(LLFILE *fp, LLScriptFilePosition *pos, 
+static void checkForDuplicateHandler(LLFILE *fp, LLScriptFilePosition *pos,
 				     LLScriptScope *scope,
 				     const char* name)
 {
@@ -2604,7 +2604,7 @@ void LLScriptHTTPResponseEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 		mBody->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, " )\n");
 		break;
-		
+
 	case LSCP_SCOPE_PASS1:
 	  checkForDuplicateHandler(fp, this, scope, "http_response");
 		if (scope->checkEntry(mRequestId->mName))
@@ -2615,7 +2615,7 @@ void LLScriptHTTPResponseEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 		{
 			mRequestId->mScopeEntry = scope->addEntry(mRequestId->mName, LIT_VARIABLE, LST_KEY);
 		}
-		
+
 		if (scope->checkEntry(mStatus->mName))
 		{
 			gErrorToText.writeError(fp, this, LSERROR_DUPLICATE_NAME);
@@ -2624,7 +2624,7 @@ void LLScriptHTTPResponseEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 		{
 			mStatus->mScopeEntry = scope->addEntry(mStatus->mName, LIT_VARIABLE, LST_INTEGER);
 		}
-		
+
 		if (scope->checkEntry(mMetadata->mName))
 		{
 			gErrorToText.writeError(fp, this, LSERROR_DUPLICATE_NAME);
@@ -2633,7 +2633,7 @@ void LLScriptHTTPResponseEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 		{
 			mMetadata->mScopeEntry = scope->addEntry(mMetadata->mName, LIT_VARIABLE, LST_LIST);
 		}
-		
+
 		if (scope->checkEntry(mBody->mName))
 		{
 			gErrorToText.writeError(fp, this, LSERROR_DUPLICATE_NAME);
@@ -2643,7 +2643,7 @@ void LLScriptHTTPResponseEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 			mBody->mScopeEntry = scope->addEntry(mBody->mName, LIT_VARIABLE, LST_STRING);
 		}
 		break;
-		
+
 	case LSCP_RESOURCE:
 		{
 			// we're just tryng to determine how much space the variable needs
@@ -2667,7 +2667,7 @@ void LLScriptHTTPResponseEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 			}
 		}
 		break;
-		
+
 	case LSCP_EMIT_CIL_ASSEMBLY:
 	        fdotabs(fp, tabs, tabsize);
    	        fprintf(fp, "http_response( valuetype [ScriptTypes]LindenLab.SecondLife.Key ");
@@ -2714,7 +2714,7 @@ void LLScriptHTTPRequestEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIP
 		mBody->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, " )\n");
 		break;
-		
+
 	case LSCP_SCOPE_PASS1:
 		checkForDuplicateHandler(fp, this, scope, "http_request");
 		if (scope->checkEntry(mRequestId->mName))
@@ -2734,7 +2734,7 @@ void LLScriptHTTPRequestEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIP
 		{
 			mMethod->mScopeEntry = scope->addEntry(mMethod->mName, LIT_VARIABLE, LST_STRING);
 		}
-		
+
 		if (scope->checkEntry(mBody->mName))
 		{
 			gErrorToText.writeError(fp, this, LSERROR_DUPLICATE_NAME);
@@ -2744,7 +2744,7 @@ void LLScriptHTTPRequestEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIP
 			mBody->mScopeEntry = scope->addEntry(mBody->mName, LIT_VARIABLE, LST_STRING);
 		}
 		break;
-		
+
 	case LSCP_RESOURCE:
 		{
 			// we're just tryng to determine how much space the variable needs
@@ -2764,7 +2764,7 @@ void LLScriptHTTPRequestEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIP
 			}
 		}
 		break;
-		
+
 	case LSCP_EMIT_CIL_ASSEMBLY:
 	        fdotabs(fp, tabs, tabsize);
    	        fprintf(fp, "http_request( valuetype [ScriptTypes]LindenLab.SecondLife.Key ");
@@ -3911,9 +3911,9 @@ static void print_cil_assignment(LLFILE *fp, LLScriptExpression *exp, LLScriptSc
 	{
 		if (ident->mScopeEntry->mIDType == LIT_VARIABLE)
 		{
-			// Language semantics require value of assignment to be left on stack. 
+			// Language semantics require value of assignment to be left on stack.
 			// TODO: Optimise away redundant dup/pop pairs.
-			fprintf(fp, "dup\n"); 
+			fprintf(fp, "dup\n");
 			if(is_parameter(ident, function_scope))
 			{
 				// Parameter, store by name.
@@ -4027,7 +4027,7 @@ static void print_cil_add(LLFILE* fp, LSCRIPTType left_type, LSCRIPTType right_t
 		// String concatenation.
 		fprintf(fp, "call string valuetype [LslUserScript]LindenLab.SecondLife.LslUserScript::Add(string, string)\n");
 		break;
-	
+
 	case LST_VECTOR:
 
 		// Vector addition.
@@ -4058,7 +4058,7 @@ static void print_cil_add(LLFILE* fp, LSCRIPTType left_type, LSCRIPTType right_t
 			break;
 		case LST_KEY:
 			fprintf(fp, "call class [mscorlib]System.Collections.ArrayList class [LslUserScript]LindenLab.SecondLife.LslUserScript::Append(valuetype [ScriptTypes]LindenLab.SecondLife.Key, class [mscorlib]System.Collections.ArrayList)\n");
-			break;			
+			break;
 		case LST_VECTOR:
 			fprintf(fp, "call class [mscorlib]System.Collections.ArrayList class [LslUserScript]LindenLab.SecondLife.LslUserScript::Append(valuetype [ScriptTypes]LindenLab.SecondLife.Vector, class [mscorlib]System.Collections.ArrayList)\n");
 			break;
@@ -4138,7 +4138,7 @@ static void print_cil_sub(LLFILE* fp, LSCRIPTType left_type, LSCRIPTType right_t
 	{
 	case LST_INTEGER:
 		if(LST_INTEGER == right_type)
-		{	
+		{
 			fprintf(fp, "call int32 [LslUserScript]LindenLab.SecondLife.LslUserScript::Subtract(int32, int32)\n");
 			break;
 		}
@@ -4232,10 +4232,10 @@ static void print_cil_neg(LLFILE* fp, LSCRIPTType type)
 	  fprintf(fp, "neg\n");
 	  break;
 	case LST_VECTOR:
-	  fprintf(fp, "call class [ScriptTypes]LindenLab.SecondLife.Vector class [LslUserScript]LindenLab.SecondLife.LslUserScript::'Negate'(class [ScriptTypes]LindenLab.SecondLife.Vector)\n");	  
+	  fprintf(fp, "call class [ScriptTypes]LindenLab.SecondLife.Vector class [LslUserScript]LindenLab.SecondLife.LslUserScript::'Negate'(class [ScriptTypes]LindenLab.SecondLife.Vector)\n");
 	  break;
 	case LST_QUATERNION:
-	  fprintf(fp, "call class [ScriptTypes]LindenLab.SecondLife.Quaternion class [LslUserScript]LindenLab.SecondLife.LslUserScript::'Negate'(class [ScriptTypes]LindenLab.SecondLife.Quaternion)\n");	  
+	  fprintf(fp, "call class [ScriptTypes]LindenLab.SecondLife.Quaternion class [LslUserScript]LindenLab.SecondLife.LslUserScript::'Negate'(class [ScriptTypes]LindenLab.SecondLife.Quaternion)\n");
 	  break;
 	default:
 	  break;
@@ -4288,7 +4288,7 @@ static void print_cil_mul(LLFILE* fp, LSCRIPTType left_type, LSCRIPTType right_t
 			break;
 		}
 		break;
-		
+
 	case LST_VECTOR:
 
 		switch(right_type)
@@ -4372,11 +4372,11 @@ void LLScriptMulAssignment::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCo
 			mLValue->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 			print_cil_numeric_cast(fp, mLValue->mReturnType, mRightSide->mReturnType);
 			print_cil_mul(fp, mLValue->mReturnType, mRightSide->mReturnType);
-			if((mLValue->mReturnType == LST_INTEGER) && 
+			if((mLValue->mReturnType == LST_INTEGER) &&
 			   (mRightSide->mReturnType == LST_FLOATINGPOINT))
 			{
 			    print_cil_cast(fp, LST_FLOATINGPOINT, LST_INTEGER);
-			} 
+			}
 			print_cil_assignment(fp, mLValue, entry);
 		}
 		break;
@@ -4408,7 +4408,7 @@ static void print_cil_div(LLFILE* fp, LSCRIPTType left_type, LSCRIPTType right_t
 		// Numeric division.
 		fprintf(fp, "call float64 [LslUserScript]LindenLab.SecondLife.LslUserScript::Divide(float64, float64)\n");
 		break;
-	
+
 	case LST_VECTOR:
 
 		switch(right_type)
@@ -4433,7 +4433,7 @@ static void print_cil_div(LLFILE* fp, LSCRIPTType left_type, LSCRIPTType right_t
 
 	case LST_QUATERNION:
 
-		fprintf(fp, "call class [ScriptTypes]LindenLab.SecondLife.Quaternion class [LslUserScript]LindenLab.SecondLife.LslUserScript::'Divide'(class [ScriptTypes]LindenLab.SecondLife.Quaternion, class [ScriptTypes]LindenLab.SecondLife.Quaternion)\n");		
+		fprintf(fp, "call class [ScriptTypes]LindenLab.SecondLife.Quaternion class [LslUserScript]LindenLab.SecondLife.LslUserScript::'Divide'(class [ScriptTypes]LindenLab.SecondLife.Quaternion, class [ScriptTypes]LindenLab.SecondLife.Quaternion)\n");
 		break;
 
 	default:
@@ -4510,7 +4510,7 @@ static void print_cil_mod(LLFILE* fp, LSCRIPTType left_type, LSCRIPTType right_t
 		// Numeric remainder.
 		fprintf(fp, "call int32 [LslUserScript]LindenLab.SecondLife.LslUserScript::Modulo(int32, int32)\n");
 		break;
-	
+
 	case LST_VECTOR:
 
 		// Vector cross product.
@@ -4582,7 +4582,7 @@ S32 LLScriptModAssignment::getSize()
 
 static void print_cil_eq(LLFILE* fp, LSCRIPTType left_type, LSCRIPTType right_type)
 {
-	
+
 	switch(right_type)
 	{
 	case LST_INTEGER:
@@ -4599,16 +4599,16 @@ static void print_cil_eq(LLFILE* fp, LSCRIPTType left_type, LSCRIPTType right_ty
 		// String equality.
 		fprintf(fp, "call bool valuetype [mscorlib]System.String::op_Equality(string, string)\n");
 		break;
-		
+
 	case LST_KEY:
-	        // NOTE: babbage: strings and keys can be compared, so a cast 
+	        // NOTE: babbage: strings and keys can be compared, so a cast
 	        // may be required
 	        print_cil_cast(fp, left_type, right_type);
 
 		// Key equality.
 		fprintf(fp, "call int32 [LslUserScript]LindenLab.SecondLife.LslUserScript::'Equals'(valuetype [ScriptTypes]LindenLab.SecondLife.Key, valuetype [ScriptTypes]LindenLab.SecondLife.Key)\n");
 		break;
-	
+
 	case LST_VECTOR:
 
 		// Vector equality.
@@ -4724,11 +4724,11 @@ void LLScriptNotEquals::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompil
 		    fprintf(fp, "call int32 [LslUserScript]LindenLab.SecondLife.LslUserScript::NotEquals(class [mscorlib]System.Collections.ArrayList, class [mscorlib]System.Collections.ArrayList)\n");
 		}
 		else
-		{  
+		{
 		    print_cil_eq(fp, mLeftSide->mReturnType, mRightSide->mReturnType);
 		    fprintf(fp, "ldc.i4.0\n");
 		    fprintf(fp, "ceq\n"); // Compare result of first compare equal with 0 to get compare not equal.
-		}    
+		}
 		break;
 	default:
 		mLeftSide->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -4803,7 +4803,7 @@ S32 LLScriptLessEquals::getSize()
 }
 
 static void print_cil_gte(LLFILE* fp)
-{   
+{
 	// NOTE: LSL pushes operands backwards, so >= becomes <=
 	fprintf(fp, "cgt\n");
 	fprintf(fp, "ldc.i4.0\n");
@@ -4919,7 +4919,7 @@ S32 LLScriptLessThan::getSize()
 }
 
 static void print_cil_gt(LLFILE* fp)
-{   
+{
     // NOTE: LSL pushes operands backwards, so > becomes <
 	fprintf(fp, "clt\n");
 }
@@ -6311,9 +6311,9 @@ void LLScriptPostIncrement::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCo
 			fprintf(fp, "add\n");
 			print_cil_assignment(fp, mExpression, entry);
 
-			// Pop assignment result to leave original expression result on stack. 
+			// Pop assignment result to leave original expression result on stack.
 			// TODO: Optimise away redundant pop/dup pairs.
-			fprintf(fp, "pop\n"); 
+			fprintf(fp, "pop\n");
 		}
 		break;
 	default:
@@ -6408,9 +6408,9 @@ void LLScriptPostDecrement::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCo
 			fprintf(fp, "sub\n");
 			print_cil_assignment(fp, mExpression, entry);
 
-			// Pop assignment result to leave original expression result on stack. 
+			// Pop assignment result to leave original expression result on stack.
 			// TODO: Optimise away redundant pop/dup pairs.
-			fprintf(fp, "pop\n"); 
+			fprintf(fp, "pop\n");
 		}
 		break;
 	default:
@@ -6734,11 +6734,11 @@ void LLScriptStatementSequence::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 			{
 				gErrorToText.writeWarning(fp, this, LSWARN_DEAD_CODE);
 			}
-			
+
 			// babbage: set prune type to LSPRUNE_DEAD_CODE to mask other
 			// prune errors.
 			ptype = LSPRUNE_DEAD_CODE;
-			
+
 			// babbage: reset prunearg, to track whether return needed at
 			// end of dead code path as CIL always needs a return/throw.
 			prunearg = FALSE;
@@ -7161,7 +7161,7 @@ static void print_cil_if_test(LLFILE* fp, LSCRIPTType type)
 		break;
 	case LST_KEY:
 		fprintf(fp, "call bool [LslUserScript]LindenLab.SecondLife.LslUserScript::'IsNonNullUuid'(valuetype [ScriptTypes]LindenLab.SecondLife.Key)\n");
-		break;		
+		break;
 	case LST_STRING:
 		fprintf(fp, "ldstr \"\"\n");
 		fprintf(fp, "call bool string::op_Equality(string, string)\n");
@@ -7173,7 +7173,7 @@ static void print_cil_if_test(LLFILE* fp, LSCRIPTType type)
 		fprintf(fp, "call bool [LslUserScript]LindenLab.SecondLife.LslUserScript::Equals(class [mscorlib]System.Collections.ArrayList, class [mscorlib]System.Collections.ArrayList)\n");
 		fprintf(fp, "ldc.i4.0\n");
 		fprintf(fp, "ceq\n");
-		break;		
+		break;
 	default:
 		break;
 	}
@@ -7214,7 +7214,7 @@ void LLScriptIf::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass p
 			gErrorToText.writeError(fp, mExpression, LSERROR_TYPE_MISMATCH);
 		}
 		mType = type;
-		mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);		
+		mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
 	case LSCP_EMIT_CIL_ASSEMBLY:
 		{
@@ -8301,7 +8301,7 @@ void LLScriptGlobalFunctions::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPT
 		break;
 	case LSCP_SCOPE_PASS2:
 		mStatements->recurse(fp, tabs, tabsize, pass, ptype, prunearg, mFunctionScope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		
+
 		if (mParameters)
 		{
 			if (mIdentifier->mScopeEntry)
@@ -8540,7 +8540,7 @@ void LLScriptState::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePas
 	gonext(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 }
 
-// Converts string to a valid CIL class name and stores the result 
+// Converts string to a valid CIL class name and stores the result
 // in the supplied buffer, which should be at least 32 chars long.
 // If the string starts with a UUID, all characters in the UUID are included
 // in the generated name.
@@ -8577,7 +8577,7 @@ S32 LLScriptScript::getSize()
 	return 0;
 }
 
-LLScriptScript::LLScriptScript(LLScritpGlobalStorage *globals, 
+LLScriptScript::LLScriptScript(LLScritpGlobalStorage *globals,
 							   LLScriptState *states) :
     LLScriptFilePosition(0, 0),
 	mStates(states), mGlobalScope(NULL), mGlobals(NULL), mGlobalFunctions(NULL), mGodLike(FALSE)
