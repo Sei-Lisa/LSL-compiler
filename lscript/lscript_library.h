@@ -28,10 +28,11 @@
 #define LL_LSCRIPT_LIBRARY_H
 
 #include "lscript_byteformat.h"
-#include "v3math.h"
-#include "llquaternion.h"
+//#include "v3math.h"
+//#include "llquaternion.h"
 #include "lluuid.h"
 #include "lscript_byteconvert.h"
+#include <vector>
 
 class LLScriptLibData;
 
@@ -68,6 +69,7 @@ public:
 
 class LLScriptLibData
 {
+#if 0
 public:
 	// TODO: Change this to a union
 	LSCRIPTType		mType;
@@ -419,6 +421,7 @@ public:
 		delete [] mKey;
 		delete [] mString;
 	}
+#endif
 
 };
 

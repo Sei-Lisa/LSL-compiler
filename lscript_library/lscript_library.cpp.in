@@ -98,6 +98,7 @@ void LLScriptLibrary::addFunction(F32 eu, F32 st, void (*exec_func)(LLScriptLibD
 
 void LLScriptLibrary::assignExec(const char *name, void (*exec_func)(LLScriptLibData *, LLScriptLibData *, const LLUUID &))
 {
+#if 0
 	for (std::vector<LLScriptLibraryFunction>::iterator i = mFunctions.begin(); 
 		 i != mFunctions.end(); ++i)
 	{
@@ -109,8 +110,10 @@ void LLScriptLibrary::assignExec(const char *name, void (*exec_func)(LLScriptLib
 	}
 	
 	llerrs << "Unknown LSL function in assignExec: " << name << llendl;
+#endif
 }
 
+#if 0
 void LLScriptLibData::print(std::ostream &s, BOOL b_prepend_comma)
 {
 	char tmp[1024];	/*Flawfinder: ignore*/
@@ -187,6 +190,7 @@ void LLScriptLibData::print_separator(std::ostream& ostr, BOOL b_prepend_sep, ch
 		}
 	}
 }
+#endif
 
 
 LLScriptLibrary gScriptLibrary;

@@ -27,8 +27,8 @@ indra.y.cpp indra.y.hpp : indra.y
 %.o : %.cpp
 	$(CXX) -c $(CFLAGS) $(CPPFLAGS) "$<" -o "$@"
 
+lscript_library/lscript_library.o : lscript_library/lscript_library.cpp
 lslcomp.o : lslcomp.cpp
-# lscript_bytecode.o : lscript_bytecode.cpp
 lscript_error.o : lscript_error.cpp
 lscript_resource.o : lscript_resource.cpp
 lscript_scope.o : lscript_scope.cpp
@@ -38,21 +38,19 @@ indra.l.o : indra.l.cpp indra.y.hpp
 indra.y.o : indra.y.cpp indra.y.hpp
 llcommon/llfile.o : llcommon/llfile.cpp
 llcommon/llstringtable.o : llcommon/llstringtable.cpp
-# lscript_library/lscript_alloc.o : lscript_library/lscript_alloc.cpp
-lscript_library/lscript_library.o : lscript_library/lscript_library.cpp
 
 lslcomp : lslcomp.o indra.l.o indra.y.o\
- lscript_error.o lscript_resource.o\
- lscript_scope.o lscript_tree.o\
- lscript_typecheck.o\
- llcommon/llfile.o llcommon/llstringtable.o\
- lscript_library/lscript_library.o
-	g++ $(CFLAGS) $(LDFLAGS) lslcomp.o indra.l.o indra.y.o\
- lscript_error.o lscript_resource.o\
- lscript_scope.o lscript_tree.o\
- lscript_typecheck.o\
- llcommon/llfile.o llcommon/llstringtable.o\
  lscript_library/lscript_library.o\
+ lscript_error.o lscript_resource.o\
+ lscript_scope.o lscript_tree.o\
+ lscript_typecheck.o\
+ llcommon/llfile.o llcommon/llstringtable.o
+	g++ $(CFLAGS) $(LDFLAGS) lslcomp.o indra.l.o indra.y.o\
+ lscript_library/lscript_library.o\
+ lscript_error.o lscript_resource.o\
+ lscript_scope.o lscript_tree.o\
+ lscript_typecheck.o\
+ llcommon/llfile.o llcommon/llstringtable.o\
  -o lslcomp
 
 

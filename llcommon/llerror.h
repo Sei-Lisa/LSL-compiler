@@ -7,6 +7,7 @@
 #define llwarn std::cerr << "Warning: "
 #define lldebug std::cerr << "Debug: "
 #define llendl std::endl
+#define llerror(msg, lvl) llerr << (msg) << " (lvl=" << (lvl) << ")" << llendl
 #define LL_ERRS(x) std::cerr << x "Error: " << ": "
 #define LL_WARNS(x) std::cerr << x "Warning: " << ": "
 #define LL_DEBUGS(x) std::cerr << x "Warning: " << ": "

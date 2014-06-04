@@ -27,8 +27,8 @@
 #ifndef LL_LSCRIPT_TREE_H
 #define LL_LSCRIPT_TREE_H
 
-#include "v3math.h"
-#include "llquaternion.h"
+//#include "v3math.h"
+//#include "llquaternion.h"
 #include "linked_lists.h"
 #include "lscript_error.h"
 #include "lscript_typecheck.h"
