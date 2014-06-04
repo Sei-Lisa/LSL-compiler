@@ -1949,9 +1949,9 @@ void LLScriptTimerEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompi
 	case LSCP_EMIT_ASSEMBLY:
 		fprintf(fp, "timer()\n");
 		break;
-        case LSCP_SCOPE_PASS1:
-	  checkForDuplicateHandler(fp, this, scope, "timer");
-	  break;
+	case LSCP_SCOPE_PASS1:
+		checkForDuplicateHandler(fp, this, scope, "timer");
+		break;
 
 	case LSCP_EMIT_CIL_ASSEMBLY:
 		fprintf(fp, "timer()");
@@ -1979,9 +1979,9 @@ void LLScriptMovingStartEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIP
 		fdotabs(fp, tabs, tabsize);
 		fprintf(fp, "moving_start()\n");
 		break;
-        case LSCP_SCOPE_PASS1:
-	  checkForDuplicateHandler(fp, this, scope, "moving_start");
-	  break;
+	case LSCP_SCOPE_PASS1:
+		checkForDuplicateHandler(fp, this, scope, "moving_start");
+		break;
 
 	case LSCP_EMIT_CIL_ASSEMBLY:
 		fprintf(fp, "moving_start()");
@@ -2009,9 +2009,9 @@ void LLScriptMovingEndEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTC
 		fdotabs(fp, tabs, tabsize);
 		fprintf(fp, "moving_end()\n");
 		break;
-        case LSCP_SCOPE_PASS1:
-          checkForDuplicateHandler(fp, this, scope, "moving_end");
-          break;
+	case LSCP_SCOPE_PASS1:
+		checkForDuplicateHandler(fp, this, scope, "moving_end");
+		break;
 
 	case LSCP_EMIT_CIL_ASSEMBLY:
 		fprintf(fp, "moving_end()");
@@ -2042,7 +2042,7 @@ void LLScriptRTPEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 		fprintf(fp, ")\n");
 		break;
 	case LSCP_SCOPE_PASS1:
-	  checkForDuplicateHandler(fp, this, scope, "run_time_perms");
+		checkForDuplicateHandler(fp, this, scope, "run_time_perms");
 		if (scope->checkEntry(mRTPermissions->mName))
 		{
 			gErrorToText.writeError(fp, this, LSERROR_DUPLICATE_NAME);
