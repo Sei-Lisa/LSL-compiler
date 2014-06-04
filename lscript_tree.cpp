@@ -2006,7 +2006,7 @@ void LLScriptRTPEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "run_time_permissions(integer ");
+		fprintf(fp, "%s(integer ", pass == LSCP_PRETTY_PRINT ? "run_time_permissions" : "chat");
 		mRTPermissions->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ")\n");
 		break;
@@ -2062,7 +2062,7 @@ void LLScriptChatEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompil
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "chat(integer ");
+		fprintf(fp, "%s(integer ", pass == LSCP_PRETTY_PRINT ? "listen" : "chat");
 		mChannel->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", string ");
 		mName->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -7264,7 +7264,7 @@ void LLScriptIfElse::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePa
 		mStatement1->recurse(fp, tabs+(mStatement1->mType != LSSMT_COMPOUND_STATEMENT), tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fdotabs(fp, tabs, tabsize);
 		fprintf(fp, "else\n");
-		mStatement2->recurse(fp, tabs+(mStatement2->mType != LSSMT_COMPOUND_STATEMENT), tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		mStatement2->recurse(fp, tabs+(mStatement2->mType != LSSMT_COMPOUND_STATEMENT && mStatement2->mType != LSSMT_IF && mStatement2->mType != LSSMT_IF_ELSE), tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		{
