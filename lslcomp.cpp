@@ -19,12 +19,12 @@ int main(int argc, char *argv[])
     sprintf(src_filename, "%s.lsl", argv[1]);
     char err_filename[MAX_STRING];
     sprintf(err_filename, "%s.out", argv[1]);
-    char class_name[MAX_STRING];
-    sprintf(class_name, "%s", argv[1]);
+    //char class_name[MAX_STRING];
+    //sprintf(class_name, "%s", argv[1]);
     char bin_name[MAX_STRING];
     sprintf(bin_name, "%s.cil", argv[1]);
 
-    lscript_compile(src_filename, bin_name, err_filename, true, class_name, false);
+    lscript_compile(src_filename, bin_name, err_filename, true, "Klass", false);
 
 // Don't generate LSO bytecode as we've removed LSO output code.
 //    sprintf(bin_name, "%s.lso", argv[1]);
