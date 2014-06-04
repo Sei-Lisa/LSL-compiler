@@ -6178,7 +6178,10 @@ void LLScriptListInitializer::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPT
 	{
 	case LSCP_PRETTY_PRINT:
 		fprintf(fp, "[ ");
-		mExpressionList->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		if (mExpressionList)
+		{
+			mExpressionList->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		}
 		fprintf(fp, " ]");
 		break;
 	case LSCP_EMIT_ASSEMBLY:
