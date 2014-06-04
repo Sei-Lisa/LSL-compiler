@@ -7338,9 +7338,9 @@ void LLScriptFor::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass 
 		fprintf(fp, "for (");
 		if(mSequence)
 			mSequence->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " ; ");
+		fprintf(fp, "; ");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " ; ");
+		fprintf(fp, "; ");
 		if(mExpressionList)
 			mExpressionList->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ")\n");
