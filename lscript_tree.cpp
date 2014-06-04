@@ -670,6 +670,19 @@ void LLScriptSAVector::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
+		fprintf(fp, "<");
+		mEntry1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ", ");
+		mEntry2->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ", ");
+		mEntry3->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ">");
+		if (mNextp)
+		{
+			fprintf(fp, ", ");
+			mNextp->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		}
+		break;
 	case LSCP_EMIT_ASSEMBLY:
 		fprintf(fp, "<");
 		mEntry3->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -761,6 +774,21 @@ void LLScriptSAQuaternion::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCom
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
+		fprintf(fp, "<");
+		mEntry1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ", ");
+		mEntry2->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ", ");
+		mEntry3->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ", ");
+		mEntry4->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ">");
+		if (mNextp)
+		{
+			fprintf(fp, ", ");
+			mNextp->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		}
+		break;
 	case LSCP_EMIT_ASSEMBLY:
 		fprintf(fp, "<");
 		mEntry4->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
