@@ -195,8 +195,14 @@ void LLScriptConstantFloat::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCo
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
-		fprintf(fp, "%5.5f", mValue);
+	{
+		char v[30];
+		sprintf(v, "%1.9g", mValue);
+		if (!strstr(v, ".") && !strstr(v, "e"))
+			strcat(v, ".");
+		fprintf(fp, "%s", v);
 		break;
+	}
 	case LSCP_EMIT_ASSEMBLY:
 		fprintf(fp, "PUSHARGF %5.5f\n", mValue);
 		break;
