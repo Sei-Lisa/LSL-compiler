@@ -671,13 +671,13 @@ void LLScriptSAVector::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 	{
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
-		fprintf(fp, "< ");
+		fprintf(fp, "<");
 		mEntry3->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", ");
 		mEntry2->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", ");
 		mEntry1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " >");
+		fprintf(fp, ">");
 		if (mNextp)
 		{
 			fprintf(fp, ", ");
@@ -762,7 +762,7 @@ void LLScriptSAQuaternion::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCom
 	{
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
-		fprintf(fp, "< ");
+		fprintf(fp, "<");
 		mEntry4->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", ");
 		mEntry3->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -770,7 +770,7 @@ void LLScriptSAQuaternion::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCom
 		mEntry2->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", ");
 		mEntry1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " >");
+		fprintf(fp, ">");
 		if (mNextp)
 		{
 			fprintf(fp, ", ");
@@ -866,10 +866,10 @@ void LLScriptSAList::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePa
 	{
 	case LSCP_PRETTY_PRINT:
 	case LSCP_EMIT_ASSEMBLY:
-		fprintf(fp, "[ ");
+		fprintf(fp, "[");
 		if (mEntryList)
 			mEntryList->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " ]");
+		fprintf(fp, "]");
 		if (mNextp)
 		{
 			fprintf(fp, ", ");
@@ -1012,7 +1012,7 @@ void LLScriptGlobalVariable::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTC
 	{
 	case LSCP_PRETTY_PRINT:
 		mType->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp,"\t");
+		fprintf(fp," ");
 		mIdentifier->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		if (mAssignable)
 		{
@@ -5597,9 +5597,9 @@ void LLScriptParenthesis::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTComp
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
-		fprintf(fp, "( ");
+		fprintf(fp, "(");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )");
+		fprintf(fp, ")");
 		break;
 	case LSCP_TYPE:
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -5936,9 +5936,9 @@ void LLScriptTypeCast::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompile
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
-		fprintf(fp, "( ");
+		fprintf(fp, "(");
 		mType->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, ") ");
+		fprintf(fp, ")");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
 	case LSCP_EMIT_ASSEMBLY:
@@ -5980,13 +5980,13 @@ void LLScriptVectorInitializer::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRI
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
-		fprintf(fp, "< ");
+		fprintf(fp, "<");
 		mExpression1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", ");
 		mExpression2->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", ");
 		mExpression3->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " >");
+		fprintf(fp, ">");
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		mExpression1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -6072,7 +6072,7 @@ void LLScriptQuaternionInitializer::recurse(LLFILE *fp, S32 tabs, S32 tabsize, L
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
-		fprintf(fp, "< ");
+		fprintf(fp, "<");
 		mExpression1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", ");
 		mExpression2->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -6080,7 +6080,7 @@ void LLScriptQuaternionInitializer::recurse(LLFILE *fp, S32 tabs, S32 tabsize, L
 		mExpression3->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ", ");
 		mExpression4->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " >");
+		fprintf(fp, ">");
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		mExpression1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -6183,12 +6183,12 @@ void LLScriptListInitializer::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPT
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
-		fprintf(fp, "[ ");
+		fprintf(fp, "[");
 		if (mExpressionList)
 		{
 			mExpressionList->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		}
-		fprintf(fp, " ]");
+		fprintf(fp, "]");
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		count = 0;
@@ -6461,10 +6461,10 @@ void LLScriptFunctionCall::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCom
 	{
 	case LSCP_PRETTY_PRINT:
 		mIdentifier->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, "( ");
+		fprintf(fp, "(");
 		if (mExpressionList)
 			mExpressionList->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )");
+		fprintf(fp, ")");
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		if (mIdentifier->mScopeEntry->mType)
@@ -7199,9 +7199,9 @@ void LLScriptIf::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass p
 	{
 	case LSCP_PRETTY_PRINT:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "if ( ");
+		fprintf(fp, "if (");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
 	case LSCP_EMIT_ASSEMBLY:
@@ -7258,9 +7258,9 @@ void LLScriptIfElse::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePa
 	{
 	case LSCP_PRETTY_PRINT:
 		fdotabs(fp, tabs, tabsize);
-		fprintf(fp, "if ( ");
+		fprintf(fp, "if (");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-		fprintf(fp, " )\n");
+		fprintf(fp, ")\n");
 		mStatement1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fdotabs(fp, tabs, tabsize);
 		fprintf(fp, "else\n");
@@ -7556,7 +7556,7 @@ void LLScriptDeclaration::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTComp
 		{
 			fdotabs(fp, tabs, tabsize);
 			mType->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-			fprintf(fp, "\t");
+			fprintf(fp, " ");
 			mIdentifier->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 			fprintf(fp, " = ");
 			mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -7566,7 +7566,7 @@ void LLScriptDeclaration::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTComp
 		{
 			fdotabs(fp, tabs, tabsize);
 			mType->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-			fprintf(fp, "\t");
+			fprintf(fp, " ");
 			mIdentifier->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 			fprintf(fp, ";\n");
 		}
@@ -8208,14 +8208,14 @@ void LLScriptGlobalFunctions::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPT
 		if (mType)
 		{
 			mType->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-			fprintf(fp, "\t");
+			fprintf(fp, " ");
 		}
 		mIdentifier->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		if (mParameters)
 		{
-			fprintf(fp, "( ");
+			fprintf(fp, "(");
 			mParameters->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
-			fprintf(fp, " )\n");
+			fprintf(fp, ")\n");
 		}
 		else
 		{
