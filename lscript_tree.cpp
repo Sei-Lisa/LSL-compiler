@@ -7202,7 +7202,7 @@ void LLScriptIf::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass p
 		fprintf(fp, "if (");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ")\n");
-		mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		mStatement->recurse(fp, tabs+(mStatement->mType != LSSMT_COMPOUND_STATEMENT), tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		{
@@ -7261,10 +7261,10 @@ void LLScriptIfElse::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePa
 		fprintf(fp, "if (");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ")\n");
-		mStatement1->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		mStatement1->recurse(fp, tabs+(mStatement1->mType != LSSMT_COMPOUND_STATEMENT), tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fdotabs(fp, tabs, tabsize);
 		fprintf(fp, "else\n");
-		mStatement2->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		mStatement2->recurse(fp, tabs+(mStatement2->mType != LSSMT_COMPOUND_STATEMENT), tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		{
@@ -7345,7 +7345,7 @@ void LLScriptFor::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass 
 			mExpressionList->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ")\n");
 		if(mStatement)
-			mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+			mStatement->recurse(fp, tabs+(mStatement->mType != LSSMT_COMPOUND_STATEMENT), tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		{
@@ -7428,7 +7428,7 @@ void LLScriptDoWhile::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompileP
 	case LSCP_PRETTY_PRINT:
 		fdotabs(fp, tabs, tabsize);
 		fprintf(fp, "do\n");
-		mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		mStatement->recurse(fp, tabs+(mStatement->mType != LSSMT_COMPOUND_STATEMENT), tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fdotabs(fp, tabs, tabsize);
 		fprintf(fp, "while (");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
@@ -7491,7 +7491,7 @@ void LLScriptWhile::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePas
 		fprintf(fp, "while (");
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		fprintf(fp, ")\n");
-		mStatement->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		mStatement->recurse(fp, tabs+(mStatement->mType != LSSMT_COMPOUND_STATEMENT), tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		{
