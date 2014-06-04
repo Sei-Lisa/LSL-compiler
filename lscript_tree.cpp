@@ -164,7 +164,10 @@ void LLScriptConstantInteger::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPT
 	switch(pass)
 	{
 	case LSCP_PRETTY_PRINT:
-		fprintf(fp, "%d", mValue);
+		if (mValue < 0)
+			fprintf(fp, "0x%08X", mValue);
+		else
+			fprintf(fp, "%d", mValue);
 		break;
 	case LSCP_EMIT_ASSEMBLY:
 		fprintf(fp, "PUSHARGI %d\n", mValue);
