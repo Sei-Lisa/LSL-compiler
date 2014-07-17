@@ -75,25 +75,25 @@ const char* gErrorText[LSERROR_EOF] = 	/*Flawfinder: ignore*/
 
 void LLScriptGenerateErrorText::writeWarning(LLFILE *fp, LLScriptFilePosition *pos, LSCRIPTWarnings warning)
 {
-	fprintf(fp, "(%d, %d) : WARNING : %s\n", pos->mLineNumber, pos->mColumnNumber, gWarningText[warning]);
+	fprintf(stderr, "(%d, %d) : WARNING : %s\n", pos->mLineNumber, pos->mColumnNumber, gWarningText[warning]);
 	mTotalWarnings++;
 }
 
 void LLScriptGenerateErrorText::writeWarning(LLFILE *fp, S32 line, S32 col, LSCRIPTWarnings warning)
 {
-	fprintf(fp, "(%d, %d) : WARNING : %s\n", line, col, gWarningText[warning]);
+	fprintf(stderr, "(%d, %d) : WARNING : %s\n", line, col, gWarningText[warning]);
 	mTotalWarnings++;
 }
 
 void LLScriptGenerateErrorText::writeError(LLFILE *fp, LLScriptFilePosition *pos, LSCRIPTErrors error)
 {
-	fprintf(fp, "(%d, %d) : ERROR : %s\n", pos->mLineNumber, pos->mColumnNumber, gErrorText[error]);
+	fprintf(stderr, "(%d, %d) : ERROR : %s\n", pos->mLineNumber, pos->mColumnNumber, gErrorText[error]);
 	mTotalErrors++;
 }
 
 void LLScriptGenerateErrorText::writeError(LLFILE *fp, S32 line, S32 col, LSCRIPTErrors error)
 {
-	fprintf(fp, "(%d, %d) : ERROR : %s\n", line, col, gErrorText[error]);
+	fprintf(stderr, "(%d, %d) : ERROR : %s\n", line, col, gErrorText[error]);
 	mTotalErrors++;
 }
 
