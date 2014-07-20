@@ -64,7 +64,7 @@ switch(type)
 		fprintf(fp, "box [ScriptTypes]LindenLab.SecondLife.Quaternion\n");
 		break;
 	default:
-		llassert(false);
+		//llassert(false);
 		break;
 	}
 }
