@@ -27,6 +27,9 @@ indra.y.cpp indra.y.hpp : indra.y
 %.o : %.cpp
 	$(CXX) -c $(CFLAGS) $(CPPFLAGS) "$<" -o "$@"
 
+# Known problem: there are more unlisted dependencies than these,
+# mainly lots of .h files, but we're not analyzing them. Make clean if
+# in doubt.
 lscript_library/lscript_library.o : lscript_library/lscript_library.cpp
 lslcomp.o : lslcomp.cpp
 lscript_error.o : lscript_error.cpp
