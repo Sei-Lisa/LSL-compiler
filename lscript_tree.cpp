@@ -6822,7 +6822,7 @@ void LLScriptPrint::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePas
 	case LSCP_EMIT_CIL_ASSEMBLY:
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
 		print_cil_cast(fp, mLeftType, LST_STRING);
-		fprintf(fp, "call void class [LslLibrary]LindenLab.SecondLife.Library::Print(string)");
+		fprintf(fp, "call void class [LslLibrary]LindenLab.SecondLife.Library::Print(string)\n");
 		break;
 	default:
 		mExpression->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
