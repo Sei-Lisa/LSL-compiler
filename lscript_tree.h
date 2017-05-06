@@ -853,6 +853,52 @@ public:
 	LLScriptIdentifier	*mReserved;
 };
 
+class LLScriptExperiencePermissionsEvent : public LLScriptEvent
+{
+public:
+	LLScriptExperiencePermissionsEvent(S32 line, S32 col,
+		LLScriptIdentifier *agent_id)
+		: LLScriptEvent(line, col, LSTT_PATH_UPDATE),
+		 mAgentId(agent_id)
+	{
+	}
+
+	void recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass pass,
+		LSCRIPTPruneType ptype, BOOL &prunearg, LLScriptScope *scope,
+		LSCRIPTType &type, LSCRIPTType basetype, U64 &count,
+		LLScriptByteCodeChunk *chunk, LLScriptByteCodeChunk *heap,
+		S32 stacksize, LLScriptScopeEntry *entry,
+		S32 entrycount, LLScriptLibData **ldata);
+
+	S32 getSize();
+
+	LLScriptIdentifier	*mAgentId;
+};
+
+class LLScriptExperiencePermissionsDeniedEvent : public LLScriptEvent
+{
+public:
+	LLScriptExperiencePermissionsDeniedEvent(S32 line, S32 col,
+		LLScriptIdentifier *agent_id,
+		LLScriptIdentifier *reason)
+		: LLScriptEvent(line, col, LSTT_PATH_UPDATE),
+		 mAgentId(agent_id), mReason(reason)
+	{
+	}
+
+	void recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass pass,
+		LSCRIPTPruneType ptype, BOOL &prunearg, LLScriptScope *scope,
+		LSCRIPTType &type, LSCRIPTType basetype, U64 &count,
+		LLScriptByteCodeChunk *chunk, LLScriptByteCodeChunk *heap,
+		S32 stacksize, LLScriptScopeEntry *entry,
+		S32 entrycount, LLScriptLibData **ldata);
+
+	S32 getSize();
+
+	LLScriptIdentifier	*mAgentId;
+	LLScriptIdentifier	*mReason;
+};
+
 class LLScriptRezEvent : public LLScriptEvent
 {
 public:

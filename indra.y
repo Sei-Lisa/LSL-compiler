@@ -87,6 +87,8 @@
 %token					HTTP_REQUEST
 %token					TRANSACTION_RESULT
 %token					PATH_UPDATE
+%token					EXPERIENCE_PERMISSIONS
+%token					EXPERIENCE_PERMISSIONS_DENIED
 
 %token <sval>			IDENTIFIER
 %token <sval>			STATE_DEFAULT
@@ -193,6 +195,8 @@
 %type <event>			http_request
 %type <event>			transaction_result
 %type <event>			path_update
+%type <event>			experience_permissions
+%type <event>			experience_permissions_denied
 %type <event>			link_message
 %type <event>			timer
 %type <event>			chat
@@ -861,6 +865,16 @@ event
 		$$ = new LLScriptEventHandler(gLine, gColumn, $1, $2);
 		gAllocationManager->addAllocation($$);
 	}
+	| experience_permissions compound_statement
+	{
+		$$ = new LLScriptEventHandler(gLine, gColumn, $1, $2);
+		gAllocationManager->addAllocation($$);
+	}
+	| experience_permissions_denied compound_statement
+	{
+		$$ = new LLScriptEventHandler(gLine, gColumn, $1, $2);
+		gAllocationManager->addAllocation($$);
+	}
 	;
 	
 state_entry
@@ -1265,6 +1279,28 @@ path_update
 		LLScriptIdentifier	*id2 = new LLScriptIdentifier(gLine, gColumn, $7);	
 		gAllocationManager->addAllocation(id2);
 		$$ = new LLScriptPathUpdateEvent(gLine, gColumn, id1, id2);
+		gAllocationManager->addAllocation($$);
+	}
+	;
+
+experience_permissions
+	: EXPERIENCE_PERMISSIONS '(' LLKEY IDENTIFIER ')'
+	{
+		LLScriptIdentifier	*id1 = new LLScriptIdentifier(gLine, gColumn, $4);
+		gAllocationManager->addAllocation(id1);
+		$$ = new LLScriptExperiencePermissionsEvent(gLine, gColumn, id1);
+		gAllocationManager->addAllocation($$);
+	}
+	;
+
+experience_permissions_denied
+	: EXPERIENCE_PERMISSIONS_DENIED '(' LLKEY IDENTIFIER ',' INTEGER IDENTIFIER ')'
+	{
+		LLScriptIdentifier	*id1 = new LLScriptIdentifier(gLine, gColumn, $4);
+		gAllocationManager->addAllocation(id1);
+		LLScriptIdentifier	*id2 = new LLScriptIdentifier(gLine, gColumn, $7);
+		gAllocationManager->addAllocation(id2);
+		$$ = new LLScriptExperiencePermissionsDeniedEvent(gLine, gColumn, id1, id2);
 		gAllocationManager->addAllocation($$);
 	}
 	;

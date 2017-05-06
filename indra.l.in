@@ -152,6 +152,8 @@ int yyerror(const char *fmt, ...);
 "http_request"			{ count(); return(HTTP_REQUEST); }
 "transaction_result"	{ count(); return(TRANSACTION_RESULT); }
 "path_update"			{ count(); return(PATH_UPDATE); }
+"experience_permissions"		{ count(); return(EXPERIENCE_PERMISSIONS); }
+"experience_permissions_denied"	{ count(); return(EXPERIENCE_PERMISSIONS_DENIED); }
 "."						{ count(); return(PERIOD); }
 
 

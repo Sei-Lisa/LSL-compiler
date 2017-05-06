@@ -2995,6 +2995,138 @@ S32 LLScriptPathUpdateEvent::getSize()
 	return 8;
 }
 
+void LLScriptExperiencePermissionsEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass pass, LSCRIPTPruneType ptype, BOOL &prunearg, LLScriptScope *scope, LSCRIPTType &type, LSCRIPTType basetype, U64 &count, LLScriptByteCodeChunk *chunk, LLScriptByteCodeChunk *heap, S32 stacksize, LLScriptScopeEntry *entry, S32 entrycount, LLScriptLibData **ldata)
+{
+	if (gErrorToText.getErrors())
+	{
+		return;
+	}
+	switch(pass)
+	{
+	case LSCP_PRETTY_PRINT:
+	case LSCP_EMIT_ASSEMBLY:
+		fdotabs(fp, tabs, tabsize);
+		fprintf(fp, "experience_permissions(key ");
+		mAgentId->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ")\n");
+		break;
+
+	case LSCP_SCOPE_PASS1:
+	  checkForDuplicateHandler(fp, this, scope, "experience_permissions");
+		if (scope->checkEntry(mAgentId->mName))
+		{
+			gErrorToText.writeError(fp, this, LSERROR_DUPLICATE_NAME);
+		}
+		else
+		{
+			mAgentId->mScopeEntry = scope->addEntry(mAgentId->mName, LIT_VARIABLE, LST_INTEGER);
+		}
+
+	case LSCP_RESOURCE:
+		{
+			// we're just tryng to determine how much space the variable needs
+			if (mAgentId->mScopeEntry)
+			{
+				mAgentId->mScopeEntry->mOffset = (S32)count;
+				mAgentId->mScopeEntry->mSize = 4;
+				count += mAgentId->mScopeEntry->mSize;
+			}
+		}
+		break;
+
+	case LSCP_EMIT_CIL_ASSEMBLY:
+		fdotabs(fp, tabs, tabsize);
+		fprintf(fp, "experience_permissions( valuetype [ScriptTypes]LindenLab.SecondLife.Key ");
+		mAgentId->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, " )\n");
+		break;
+	default:
+		mAgentId->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		break;
+	}
+}
+
+S32 LLScriptExperiencePermissionsEvent::getSize()
+{
+	// key = 4
+	return 4;
+}
+
+void LLScriptExperiencePermissionsDeniedEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass pass, LSCRIPTPruneType ptype, BOOL &prunearg, LLScriptScope *scope, LSCRIPTType &type, LSCRIPTType basetype, U64 &count, LLScriptByteCodeChunk *chunk, LLScriptByteCodeChunk *heap, S32 stacksize, LLScriptScopeEntry *entry, S32 entrycount, LLScriptLibData **ldata)
+{
+	if (gErrorToText.getErrors())
+	{
+		return;
+	}
+	switch(pass)
+	{
+	case LSCP_PRETTY_PRINT:
+	case LSCP_EMIT_ASSEMBLY:
+		fdotabs(fp, tabs, tabsize);
+		fprintf(fp, "experience_permission_denied(key ");
+		mAgentId->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ", int ");
+		mReason->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ")\n");
+		break;
+
+	case LSCP_SCOPE_PASS1:
+	  checkForDuplicateHandler(fp, this, scope, "experience_permissions_denied");
+		if (scope->checkEntry(mAgentId->mName))
+		{
+			gErrorToText.writeError(fp, this, LSERROR_DUPLICATE_NAME);
+		}
+		else
+		{
+			mAgentId->mScopeEntry = scope->addEntry(mAgentId->mName, LIT_VARIABLE, LST_INTEGER);
+		}
+
+		if (scope->checkEntry(mReason->mName))
+		{
+			gErrorToText.writeError(fp, this, LSERROR_DUPLICATE_NAME);
+		}
+		else
+		{
+			mReason->mScopeEntry = scope->addEntry(mReason->mName, LIT_VARIABLE, LST_LIST);
+		}
+
+	case LSCP_RESOURCE:
+		{
+			// we're just tryng to determine how much space the variable needs
+			if (mAgentId->mScopeEntry)
+			{
+				mAgentId->mScopeEntry->mOffset = (S32)count;
+				mAgentId->mScopeEntry->mSize = 4;
+				count += mAgentId->mScopeEntry->mSize;
+
+				mReason->mScopeEntry->mOffset = (S32)count;
+				mReason->mScopeEntry->mSize = 4;
+				count += mReason->mScopeEntry->mSize;
+			}
+		}
+		break;
+
+	case LSCP_EMIT_CIL_ASSEMBLY:
+		fdotabs(fp, tabs, tabsize);
+		fprintf(fp, "experience_permissions_denied( valuetype [ScriptTypes]LindenLab.SecondLife.Key ");
+		mAgentId->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, ", int32 ");
+		mReason->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		fprintf(fp, " )\n");
+		break;
+	default:
+		mAgentId->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		mReason->recurse(fp, tabs, tabsize, pass, ptype, prunearg, scope, type, basetype, count, chunk, heap, stacksize, entry, entrycount, NULL);
+		break;
+	}
+}
+
+S32 LLScriptExperiencePermissionsDeniedEvent::getSize()
+{
+	// key + integer = 8
+	return 8;
+}
+
 void LLScriptMoneyEvent::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePass pass, LSCRIPTPruneType ptype, BOOL &prunearg, LLScriptScope *scope, LSCRIPTType &type, LSCRIPTType basetype, U64 &count, LLScriptByteCodeChunk *chunk, LLScriptByteCodeChunk *heap, S32 stacksize, LLScriptScopeEntry *entry, S32 entrycount, LLScriptLibData **ldata)
 {
 	if (gErrorToText.getErrors())
