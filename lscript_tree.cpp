@@ -4175,7 +4175,7 @@ void LLScriptLValue::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTCompilePa
 			else
 			{
 				// Local, load by index.
-				fprintf(fp, "ldloc.s %d\n", mIdentifier->mScopeEntry->mCount);
+				fprintf(fp, "ldloc%s%d\n", (mIdentifier->mScopeEntry->mCount > 3 ? ".s ":"."), mIdentifier->mScopeEntry->mCount);
 			}
 		}
 		else if (mIdentifier->mScopeEntry->mIDType == LIT_GLOBAL)
@@ -4260,7 +4260,7 @@ static void print_cil_assignment(LLFILE *fp, LLScriptExpression *exp, LLScriptSc
 			else
 			{
 				// Local, store by index.
-				fprintf(fp, "stloc.s %d\n", ident->mScopeEntry->mCount);
+				fprintf(fp, "stloc%s%d\n", (ident->mScopeEntry->mCount > 3 ? ".s " : "."), ident->mScopeEntry->mCount);
 			}
 		}
 		else if (ident->mScopeEntry->mIDType == LIT_GLOBAL)
@@ -7974,7 +7974,7 @@ void LLScriptDeclaration::recurse(LLFILE *fp, S32 tabs, S32 tabsize, LSCRIPTComp
 		{
 			print_cil_init_variable(fp, mIdentifier->mScopeEntry->mType);
 		}
-		fprintf(fp, "stloc.s %d\n", mIdentifier->mScopeEntry->mCount);
+		fprintf(fp, "stloc%s%d\n", (mIdentifier->mScopeEntry->mCount > 3 ? ".s " : "."), mIdentifier->mScopeEntry->mCount);
 		break;
 	default:
 		if (mExpression)
