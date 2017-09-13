@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     char bin_name[MAX_STRING];
     sprintf(bin_name, "%s.cil", base_filename);
 
-    lscript_compile(src_filename, bin_name, err_filename, true, "Klass", false);
+    lscript_compile(src_filename, bin_name, err_filename, true, "1f1f1f1f-1f1f-1f1f-1f1f-1f1f1f1f1f1f", false);
 
 // Don't generate LSO bytecode as we've removed LSO output code.
 //    sprintf(bin_name, "%s.lso", base_filename);
