@@ -15,14 +15,14 @@ Building requires installation of [**kwdb**](https://bitbucket.org/Sei_Lisa/kwdb
 Run by entering:
 
 ```
-./lslcomp <filename without extension>
+./lslcomp <filename>
 ```
 
-The input script's extension must be `.lsl`, but that extension must not be specified in the command line. In case of successful compilation, it generates the following files:
+The input script's extension defaults to `.lsl` if not specified. In case of successful compilation, it generates the following files:
 
 - An `.out` file with the LSO assembler output.
 - A `.cil` file with the Mono assembler output.
-- A `.lsl.pp` file with the pretty-printed script output.
+- An `.lsl.pp` (or whatever the original extension was, with `.pp` appended) file with the pretty-printed script output.
 
 In case of error, the error message is displayed in standard error, and the `.out` file and possibly the `.lsl.pp` file are still generated.
 
