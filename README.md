@@ -8,7 +8,7 @@ This version includes some fixes and code changes that are believed to exist in 
 
 Building requires installation of [**kwdb**](https://bitbucket.org/Sei_Lisa/kwdb). The file `indralex.py` present in the source should be copied to **kwdb**'s `lsl2dfg/lsloutputs/` directory. Edit `Makefile` to point to the installation directory of **kwdb** and to modify the compiler options if required.
 
-**flex** and **bison** are also required. And of course, a C++ compiler (tested with **g++** only).
+**kwdb** in turn requires **python 2**. **flex** and **bison** are also required. And of course, a C++ compiler (tested with **g++** only).
 
 ## Running
 
